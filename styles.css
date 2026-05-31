@@ -1437,12 +1437,11 @@ body:not([data-theme="dark"]) .background span:nth-child(5n) {
 
 .biometric-entry-card {
   display: block;
-  grid-column: 1 / -1;
 }
 
 .biometric-summary {
   display: grid;
-  grid-template-columns: 1fr 0.95fr;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.88fr);
   gap: clamp(1rem, 2.2vw, 1.6rem);
   align-items: stretch;
   cursor: pointer;
@@ -1487,6 +1486,18 @@ body:not([data-theme="dark"]) .background span:nth-child(5n) {
 .biometric-project-details p {
   max-width: 74ch;
   margin: 0;
+}
+
+.biometric-entry-card .project-copy h3 {
+  font-size: clamp(1.55rem, 2.35vw, 2.05rem);
+}
+
+.biometric-entry-card .project-copy p {
+  font-size: 0.98rem;
+}
+
+.biometric-entry-card .mini-art {
+  min-height: 170px;
 }
 
 .voice-art {
