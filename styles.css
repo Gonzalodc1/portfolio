@@ -1435,6 +1435,169 @@ body:not([data-theme="dark"]) .background span:nth-child(5n) {
     drop-shadow(0 18px 26px color-mix(in srgb, var(--cyan) 42%, transparent));
 }
 
+.biometric-entry-card {
+  display: block;
+  grid-column: 1 / -1;
+}
+
+.biometric-summary {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: clamp(1rem, 2.2vw, 1.6rem);
+  align-items: stretch;
+  cursor: pointer;
+  list-style: none;
+}
+
+.biometric-summary::-webkit-details-marker {
+  display: none;
+}
+
+.biometric-summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 70%, transparent);
+  outline-offset: 6px;
+  border-radius: 16px;
+}
+
+.biometric-toggle-copy::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: "Silkscreen", "Manrope", sans-serif;
+  line-height: 1;
+}
+
+.biometric-entry-card[open] .biometric-toggle-copy::before {
+  content: "-";
+}
+
+.biometric-project-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: biometricDetailsIn 260ms var(--ease-out) forwards;
+}
+
+.biometric-project-details p {
+  max-width: 74ch;
+  margin: 0;
+}
+
+.voice-art {
+  background:
+    radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--green) 22%, transparent), transparent 32%),
+    linear-gradient(145deg, color-mix(in srgb, var(--panel-strong) 88%, var(--green)), var(--panel));
+}
+
+.voice-auth-svg {
+  width: min(100%, 420px);
+  height: auto;
+  overflow: visible;
+}
+
+.voice-auth-svg .voice-panel {
+  fill: color-mix(in srgb, var(--paper-strong) 72%, transparent);
+  stroke: color-mix(in srgb, var(--ink) 52%, var(--green));
+  stroke-width: 4;
+  animation: voicePanelGlow 4.8s ease-in-out infinite;
+}
+
+.voice-wave,
+.voice-link,
+.voice-scan,
+.voice-lock path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.voice-wave {
+  stroke-width: 6;
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  animation: voiceWaveDraw 3.4s ease-in-out infinite;
+}
+
+.voice-wave.wave-b {
+  stroke: var(--green);
+  stroke-width: 4;
+  opacity: 0.82;
+  animation-delay: 320ms;
+}
+
+.voice-link {
+  stroke-width: 5;
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation: voiceLinkPulse 3.6s ease-in-out infinite;
+}
+
+.voice-node,
+.voice-packet,
+.voice-lock rect,
+.voice-lock circle {
+  fill: var(--ink);
+  stroke: none;
+}
+
+.voice-node {
+  animation: voiceNodePulse 2.8s ease-in-out infinite;
+}
+
+.voice-node.node-right {
+  animation-delay: 420ms;
+}
+
+.voice-lock {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: voiceLockFloat 4.2s ease-in-out infinite;
+}
+
+.voice-lock rect {
+  fill: color-mix(in srgb, var(--accent) 24%, var(--ink));
+}
+
+.voice-lock path {
+  stroke-width: 7;
+}
+
+.voice-lock circle {
+  fill: var(--amber);
+}
+
+.voice-scan {
+  stroke: var(--green);
+  stroke-width: 4;
+  opacity: 0.65;
+  stroke-dasharray: 18 14;
+  animation: voiceScanMove 7s linear infinite;
+}
+
+.voice-packet {
+  fill: var(--amber);
+  animation: voicePacketBlink 2.4s ease-in-out infinite;
+}
+
+.voice-packet.packet-two {
+  animation-delay: 220ms;
+}
+
+.voice-packet.packet-three {
+  animation-delay: 440ms;
+}
+
+.biometric-entry-card[open] .voice-lock {
+  animation-duration: 2.6s;
+}
+
 .notes-list .note-card:only-child {
   grid-column: 1 / -1;
   max-width: 760px;
@@ -3872,6 +4035,91 @@ body[data-theme="dark"] .profile-callout path {
   }
 }
 
+@keyframes biometricDetailsIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes voicePanelGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 color-mix(in srgb, var(--green) 0%, transparent));
+  }
+  50% {
+    filter: drop-shadow(0 16px 22px color-mix(in srgb, var(--green) 18%, transparent));
+  }
+}
+
+@keyframes voiceWaveDraw {
+  0% {
+    stroke-dashoffset: 520;
+    opacity: 0.42;
+  }
+  42%,
+  72% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -520;
+    opacity: 0.52;
+  }
+}
+
+@keyframes voiceLinkPulse {
+  0%,
+  100% {
+    stroke-dashoffset: 180;
+    opacity: 0.34;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 0.95;
+  }
+}
+
+@keyframes voiceNodePulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes voiceLockFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes voiceScanMove {
+  to {
+    stroke-dashoffset: -96;
+  }
+}
+
+@keyframes voicePacketBlink {
+  0%,
+  100% {
+    opacity: 0.36;
+    transform: scale(0.82);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.16);
+  }
+}
+
 @keyframes bobUp {
   0%,
   100% {
@@ -4050,6 +4298,14 @@ body[data-theme="dark"] .profile-callout path {
   .gia-art::before,
   .gia-art::after,
   .gia-art img,
+  .voice-auth-svg .voice-panel,
+  .voice-wave,
+  .voice-link,
+  .voice-node,
+  .voice-lock,
+  .voice-scan,
+  .voice-packet,
+  .biometric-project-details,
   .radar-wrap:hover .radar-data,
   .radar-wrap:hover .radar-axis,
   .radar-wrap:hover .radar-points,
@@ -4072,6 +4328,7 @@ body[data-theme="dark"] .profile-callout path {
 
   .hero,
   .project-card,
+  .biometric-summary,
   .project-grid,
   .about-grid,
   .notes-list {
