@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1273" font-family="Arial, Helvetica, sans-serif">
+<defs>
+<linearGradient id="hd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1418"/><stop offset="1" stop-color="#0e6d83"/></linearGradient>
+<linearGradient id="bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f9fb8"/><stop offset="1" stop-color="#0e6d83"/></linearGradient>
+</defs>
+<rect width="900" height="1273" fill="#ffffff"/>
+<rect width="900" height="196" fill="url(#hd)"/>
+<line x1="0" y1="0" x2="0" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="48" y1="0" x2="48" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="96" y1="0" x2="96" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="144" y1="0" x2="144" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="192" y1="0" x2="192" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="240" y1="0" x2="240" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="288" y1="0" x2="288" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="336" y1="0" x2="336" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="384" y1="0" x2="384" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="432" y1="0" x2="432" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="480" y1="0" x2="480" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="528" y1="0" x2="528" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="576" y1="0" x2="576" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="624" y1="0" x2="624" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="672" y1="0" x2="672" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="720" y1="0" x2="720" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="768" y1="0" x2="768" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="816" y1="0" x2="816" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="864" y1="0" x2="864" y2="196" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="0" y1="0" x2="900" y2="0" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="0" y1="48" x2="900" y2="48" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="0" y1="96" x2="900" y2="96" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="0" y1="144" x2="900" y2="144" stroke="#ffffff" stroke-opacity="0.04"/>
+<line x1="0" y1="192" x2="900" y2="192" stroke="#ffffff" stroke-opacity="0.04"/>
+<circle cx="92" cy="98" r="52" fill="none" stroke="#1f9fb8" stroke-width="3"/>
+<text x="92" y="116" text-anchor="middle" fill="#f2f6f4" font-size="42" font-weight="bold" font-family="Georgia, serif">GC</text>
+<text x="172" y="86" fill="#f4f8f6" font-size="40" font-weight="bold" font-family="Georgia, serif">Gonzalo del Castillo García</text>
+<text x="174" y="120" fill="#1f9fb8" font-size="19" font-weight="bold" letter-spacing="1">INGENIERO INFORMÁTICO · CIBERSEGURIDAD OT &amp; IA</text>
+<text x="174" y="150" fill="#c6d6da" font-size="14.5">Madrid, España   ·   +34 699 929 409   ·   gonzalo.dcgarcia@gmail.com</text>
+<text x="174" y="172" fill="#c6d6da" font-size="14.5">linkedin.com/in/gonzalo-del-castillo-garcia</text>
+<text x="50" y="248" fill="#101417" font-size="17" font-weight="bold" letter-spacing="1.2">PERFIL PROFESIONAL</text>
+<rect x="50" y="257" width="34" height="3" rx="1.5" fill="#1f9fb8"/>
+<text x="50" y="278" fill="#5b666c" font-size="14" font-weight="normal">Estudiante de último curso de Ingeniería Informática (UPM)</text>
+<text x="50" y="299" fill="#5b666c" font-size="14" font-weight="normal">con experiencia en ciberseguridad OT en Inetum y en el</text>
+<text x="50" y="320" fill="#5b666c" font-size="14" font-weight="normal">desarrollo de agentes de IA y automatizaciones con LLMs</text>
+<text x="50" y="341" fill="#5b666c" font-size="14" font-weight="normal">para pymes en GIA SL. Interés en seguridad industrial e IA.</text>
+<text x="50" y="388" fill="#101417" font-size="17" font-weight="bold" letter-spacing="1.2">EXPERIENCIA</text>
+<rect x="50" y="397" width="34" height="3" rx="1.5" fill="#1f9fb8"/>
+<circle cx="57" cy="414" r="6" fill="#1f9fb8"/>
+<circle cx="57" cy="414" r="11" fill="none" stroke="#1f9fb8" stroke-opacity="0.3" stroke-width="2"/>
+<text x="83" y="418" fill="#101417" font-size="15" font-weight="bold">Desarrollador de soluciones de IA</text>
+<text x="83" y="437" fill="#0e6d83" font-size="12.5" font-weight="bold">GIA SL · 2026 — Actualidad</text>
+<text x="83" y="456" fill="#5b666c" font-size="12.5">Agentes de IA y automatizaciones con LLMs para pymes.</text>
+<circle cx="57" cy="478" r="6" fill="#1f9fb8"/>
+<circle cx="57" cy="478" r="11" fill="none" stroke="#1f9fb8" stroke-opacity="0.3" stroke-width="2"/>
+<text x="83" y="482" fill="#101417" font-size="15" font-weight="bold">Prácticas en Ciberseguridad OT</text>
+<text x="83" y="501" fill="#0e6d83" font-size="12.5" font-weight="bold">Inetum · 2026 · 4 meses</text>
+<text x="83" y="520" fill="#5b666c" font-size="12.5">Arquitecturas OT/ICS · Claroty y Nozomi Networks.</text>
+<circle cx="57" cy="542" r="6" fill="#1f9fb8"/>
+<circle cx="57" cy="542" r="11" fill="none" stroke="#1f9fb8" stroke-opacity="0.3" stroke-width="2"/>
+<text x="83" y="546" fill="#101417" font-size="15" font-weight="bold">Prácticas en Ciberseguridad OT</text>
+<text x="83" y="565" fill="#0e6d83" font-size="12.5" font-weight="bold">Inetum · 2025 · 2 meses</text>
+<text x="83" y="584" fill="#5b666c" font-size="12.5">Redes industriales y detección de amenazas.</text>
+<circle cx="57" cy="606" r="6" fill="#1f9fb8"/>
+<circle cx="57" cy="606" r="11" fill="none" stroke="#1f9fb8" stroke-opacity="0.3" stroke-width="2"/>
+<text x="83" y="610" fill="#101417" font-size="15" font-weight="bold">Fundador · Marca streetwear</text>
+<text x="83" y="629" fill="#0e6d83" font-size="12.5" font-weight="bold">2023 — Actualidad</text>
+<text x="83" y="648" fill="#5b666c" font-size="12.5">Producto, marca, e-commerce (Shopify) y Meta Ads.</text>
+<circle cx="57" cy="670" r="6" fill="#1f9fb8"/>
+<circle cx="57" cy="670" r="11" fill="none" stroke="#1f9fb8" stroke-opacity="0.3" stroke-width="2"/>
+<text x="83" y="674" fill="#101417" font-size="15" font-weight="bold">Profesor particular</text>
+<text x="83" y="693" fill="#0e6d83" font-size="12.5" font-weight="bold">2021 — Actualidad · 4 años</text>
+<text x="83" y="712" fill="#5b666c" font-size="12.5">Matemáticas, Física e Inglés.</text>
+<line x1="57" y1="412" x2="57" y2="670" stroke="#dce3e4" stroke-width="2"/>
+<text x="50" y="746" fill="#101417" font-size="17" font-weight="bold" letter-spacing="1.2">FORMACIÓN</text>
+<rect x="50" y="755" width="34" height="3" rx="1.5" fill="#1f9fb8"/>
+<circle cx="57" cy="772" r="4" fill="#0e6d83"/>
+<text x="83" y="776" fill="#101417" font-size="14.5" font-weight="bold">Grado en Ingeniería Informática</text>
+<text x="83" y="794" fill="#5b666c" font-size="12.5">UPM · 2021 — Actualidad</text>
+<circle cx="57" cy="816" r="4" fill="#0e6d83"/>
+<text x="83" y="820" fill="#101417" font-size="14.5" font-weight="bold">Año académico en Florida (EE. UU.)</text>
+<text x="83" y="838" fill="#5b666c" font-size="12.5">2018 — 2019</text>
+<circle cx="57" cy="860" r="4" fill="#0e6d83"/>
+<text x="83" y="864" fill="#101417" font-size="14.5" font-weight="bold">Bachillerato de Ciencias</text>
+<text x="83" y="882" fill="#5b666c" font-size="12.5">GSD Las Rozas · 2009 — 2021</text>
+<rect x="518" y="196" width="382" height="1077" fill="#eef5f4"/>
+<text x="540" y="248" fill="#101417" font-size="17" font-weight="bold" letter-spacing="1.2">COMPETENCIAS</text>
+<rect x="540" y="257" width="34" height="3" rx="1.5" fill="#1f9fb8"/>
+<text x="540" y="282" fill="#101417" font-size="13.5" font-weight="bold">Ciberseguridad OT</text>
+<text x="850" y="282" text-anchor="end" fill="#5b666c" font-size="12">90%</text>
+<rect x="540" y="290" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="290" width="279" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="320" fill="#101417" font-size="13.5" font-weight="bold">IA y LLMs</text>
+<text x="850" y="320" text-anchor="end" fill="#5b666c" font-size="12">85%</text>
+<rect x="540" y="328" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="328" width="263" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="358" fill="#101417" font-size="13.5" font-weight="bold">Redes / OT-ICS</text>
+<text x="850" y="358" text-anchor="end" fill="#5b666c" font-size="12">78%</text>
+<rect x="540" y="366" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="366" width="241" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="396" fill="#101417" font-size="13.5" font-weight="bold">Análisis de riesgos</text>
+<text x="850" y="396" text-anchor="end" fill="#5b666c" font-size="12">72%</text>
+<rect x="540" y="404" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="404" width="223" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="434" fill="#101417" font-size="13.5" font-weight="bold">Programación (C/Java)</text>
+<text x="850" y="434" text-anchor="end" fill="#5b666c" font-size="12">55%</text>
+<rect x="540" y="442" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="442" width="170" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="472" fill="#101417" font-size="13.5" font-weight="bold">Diseño / multimedia</text>
+<text x="850" y="472" text-anchor="end" fill="#5b666c" font-size="12">65%</text>
+<rect x="540" y="480" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="480" width="201" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="524" fill="#101417" font-size="17" font-weight="bold" letter-spacing="1.2">IDIOMAS</text>
+<rect x="540" y="533" width="34" height="3" rx="1.5" fill="#1f9fb8"/>
+<text x="540" y="556" fill="#101417" font-size="13.5" font-weight="bold">Español</text>
+<text x="850" y="556" text-anchor="end" fill="#0e6d83" font-size="12" font-weight="bold">Nativo</text>
+<rect x="540" y="564" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="564" width="310" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="594" fill="#101417" font-size="13.5" font-weight="bold">Inglés</text>
+<text x="850" y="594" text-anchor="end" fill="#0e6d83" font-size="12" font-weight="bold">C1 / C2</text>
+<rect x="540" y="602" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="602" width="279" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="632" fill="#101417" font-size="13.5" font-weight="bold">Francés</text>
+<text x="850" y="632" text-anchor="end" fill="#0e6d83" font-size="12" font-weight="bold">A2 / B1</text>
+<rect x="540" y="640" width="310" height="9" rx="4.5" fill="#d7e2e3"/>
+<rect x="540" y="640" width="124" height="9" rx="4.5" fill="url(#bar)"/>
+<text x="540" y="684" fill="#101417" font-size="17" font-weight="bold" letter-spacing="1.2">HERRAMIENTAS</text>
+<rect x="540" y="693" width="34" height="3" rx="1.5" fill="#1f9fb8"/>
+<rect x="540" y="697" width="63" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="572" y="712" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">Claroty</text>
+<rect x="611.2" y="697" width="56" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="639" y="712" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">Nozomi</text>
+<rect x="674.8000000000001" y="697" width="71" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="710" y="712" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">Cisco PT</text>
+<rect x="753.6" y="697" width="56" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="781" y="712" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">Python</text>
+<rect x="540" y="729" width="86" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="583" y="744" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">LLMs / RAG</text>
+<rect x="634.0" y="729" width="63" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="666" y="744" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">Shopify</text>
+<rect x="705.2" y="729" width="71" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="741" y="744" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">Meta Ads</text>
+<rect x="540" y="761" width="78" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="579" y="776" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">Photoshop</text>
+<rect x="626.4" y="761" width="94" height="23" rx="11.5" fill="#ffffff" stroke="#dce3e4"/>
+<text x="673" y="776" text-anchor="middle" fill="#0e6d83" font-size="12" font-weight="bold">Illustrator</text>
+<text x="540" y="816" fill="#101417" font-size="17" font-weight="bold" letter-spacing="1.2">OBJETIVO</text>
+<rect x="540" y="825" width="34" height="3" rx="1.5" fill="#1f9fb8"/>
+<text x="540" y="844" fill="#5b666c" font-size="13" font-weight="normal">Prácticas / empleo junior en</text>
+<text x="540" y="864" fill="#5b666c" font-size="13" font-weight="normal">ciberseguridad OT e infraestructuras</text>
+<text x="540" y="884" fill="#5b666c" font-size="13" font-weight="normal">industriales. Carné B · Incorporación</text>
+<text x="540" y="904" fill="#5b666c" font-size="13" font-weight="normal">inmediata.</text>
+<rect x="0" y="1239" width="900" height="34" fill="#0e6d83"/>
+<text x="450.0" y="1261" text-anchor="middle" fill="#dff0f3" font-size="12.5" letter-spacing="1">CV INFOGRÁFICO · GONZALO DEL CASTILLO GARCÍA · 2026</text>
+</svg>
