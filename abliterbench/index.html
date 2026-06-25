@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abliteration does not buy autonomy — Gonzalo Del Castillo García</title>
+  <meta name="description" content="Refusal removal across capability- and willingness-bound offensive tasks in small local LLMs. A measurement / safety paper." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css" />
+  <style>
+    :root{
+      --ink:#1a1a1a; --muted:#5b5b5b; --line:#e2e0da; --bg:#fbfaf7;
+      --accent:#7a1f1f; --link:#1c4f8a;
+      --serif:"Computer Modern Serif","Latin Modern Roman",Georgia,"Times New Roman",serif;
+    }
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:var(--serif); font-size:19px; line-height:1.62;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    .wrap{max-width:720px; margin:0 auto; padding:72px 28px 96px}
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .back{font-size:15px; color:var(--muted); letter-spacing:.02em}
+    .eyebrow{font-size:14px; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--accent); margin:40px 0 14px}
+    h1{font-size:38px; line-height:1.18; margin:0 0 10px; font-weight:700; letter-spacing:-.01em}
+    .subtitle{font-size:22px; color:var(--muted); font-style:italic; margin:0 0 22px}
+    .byline{font-size:16px; color:var(--muted); margin:0 0 6px}
+    .rule{height:1px; background:var(--line); border:0; margin:34px 0}
+    h2{font-size:15px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+      margin:38px 0 12px; font-weight:700}
+    p{margin:0 0 18px}
+    .abstract{font-size:19.5px}
+    em{font-style:italic}
+    ol.findings{margin:0; padding-left:1.2em}
+    ol.findings li{margin:0 0 14px}
+    figure{margin:30px 0; text-align:center}
+    figure img{max-width:100%; height:auto; border:1px solid var(--line); border-radius:6px; background:#fff}
+    figcaption{font-size:15px; color:var(--muted); margin-top:10px; font-style:italic}
+    .actions{display:flex; gap:14px; flex-wrap:wrap; margin:34px 0 8px}
+    .btn{display:inline-block; padding:11px 20px; border:1px solid var(--ink); border-radius:8px;
+      color:var(--ink); font-size:16px; transition:background .18s ease,color .18s ease}
+    .btn:hover{background:var(--ink); color:var(--bg); text-decoration:none}
+    .btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+    .btn.primary:hover{background:#5e1717}
+    .note{font-size:15px; color:var(--muted); margin-top:24px}
+    @media (max-width:560px){ body{font-size:18px} h1{font-size:30px} .wrap{padding:48px 20px 72px} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="back" href="../index.html#work">&larr; Back to portfolio</a>
+
+    <p class="eyebrow">Preprint &middot; 2026 &middot; Measurement / Safety</p>
+    <h1>Abliteration does not buy autonomy</h1>
+    <p class="subtitle">Refusal removal across capability- and willingness-bound offensive tasks in small local LLMs</p>
+    <p class="byline">Gonzalo Del Castillo García &middot; Independent Researcher</p>
+
+    <hr class="rule" />
+
+    <p class="abstract">
+      A widely repeated worry holds that <em>abliteration</em> &mdash; surgically removing the refusal
+      direction from an open-weight model &mdash; turns a cheap, locally-runnable LLM into a more
+      dangerous autonomous attacker. This paper tests that directly. Running matched pairs (an aligned
+      7&ndash;8B model against its abliterated twin) on a single consumer laptop GPU, across synthetic
+      OSINT, static code-audit, and phishing-generation tasks, it separates <em>willingness</em> from
+      <em>capability</em>. The finding: the effect of removing refusals is <em>signed by the task</em>.
+      Where the task is bound by capability, abliteration does not help and usually hurts; where it is
+      bound by willingness, it helps &mdash; but only by as much refusal as the aligned model had to
+      give up, which for some small models is almost none.
+    </p>
+
+    <h2>Key findings</h2>
+    <ol class="findings">
+      <li>Removing refusals does <strong>not</strong> raise a small model's autonomous offensive
+        capability, and usually lowers it &mdash; across three model families, with non-overlapping
+        confidence intervals and a paired permutation test (<em>p</em>&lt;0.001).</li>
+      <li>On a willingness-bound task (writing a phishing lure) the effect <strong>reverses</strong>,
+        and its size tracks how robust the aligned model's refusal was to begin with &mdash; for one
+        family, the aligned model already complies before any edit.</li>
+      <li>A <em>declared-synthetic</em> range structurally cannot measure a frontier model's refusal of
+        person-OSINT. Reported as a negative methodological result, alongside a harness audit that
+        retracted an earlier false &ldquo;frontier refuses&rdquo; finding from this same work.</li>
+    </ol>
+
+    <figure>
+      <img src="./fig3_bottleneck.png" alt="The abliteration effect flips sign with the task's bottleneck" />
+      <figcaption>The aligned/abliterated ordering reverses between capability-bound tasks (OSINT,
+        code audit) and the willingness-bound one (phishing).</figcaption>
+    </figure>
+
+    <div class="actions">
+      <a class="btn primary" href="./paper.pdf">Read the paper (PDF)</a>
+      <a class="btn" href="https://github.com/Gonzalodc1/abliterbench" target="_blank" rel="noreferrer">Code &amp; data</a>
+    </div>
+
+    <p class="note">
+      Preliminary findings; AI-assisted writing is disclosed in the paper. All targets are synthetic
+      (RFC-2606 <code>.example</code>); no real people or systems were involved.
+    </p>
+  </main>
+</body>
+</html>
