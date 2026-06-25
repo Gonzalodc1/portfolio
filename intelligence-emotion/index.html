@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Can Intelligence Exist Without Emotion? — Gonzalo Del Castillo García</title>
+  <meta name="description" content="A reflection on emotional and cognitive intelligence in humans and machines." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css" />
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #5b5b5b;
+      --line: #e2e0da;
+      --bg: #fbfaf7;
+      --accent: #1c4f8a;
+      --link: #1c4f8a;
+      --serif: "Computer Modern Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Reading progress bar */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent);
+      z-index: 100;
+      transition: width 0.1s linear;
+    }
+
+    /* Top nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      background: rgba(251, 250, 247, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      z-index: 50;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .back {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .back:hover { color: var(--ink); }
+
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      font-size: 13px;
+      font-family: var(--serif);
+    }
+
+    .lang-btn {
+      padding: 5px 14px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-btn.active {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: var(--line);
+      color: var(--ink);
+    }
+
+    /* Main content */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 28px 120px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .byline {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      border: 0;
+      margin: 36px 0;
+    }
+
+    /* Essay body */
+    .essay h2 {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 52px 0 20px;
+      font-weight: 700;
+    }
+
+    .essay h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .essay p {
+      margin-bottom: 22px;
+    }
+
+    .essay p:last-child {
+      margin-bottom: 0;
+    }
+
+    .essay strong {
+      font-weight: 700;
+    }
+
+    .essay em {
+      font-style: italic;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 40px 0;
+      padding: 24px 28px;
+      border-left: 3px solid var(--accent);
+      background: rgba(28, 79, 138, 0.04);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .pull-quote p {
+      font-size: 20px;
+      line-height: 1.55;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 10px !important;
+    }
+
+    .pull-quote cite {
+      font-size: 14px;
+      color: var(--muted);
+      font-style: normal;
+      letter-spacing: 0.04em;
+    }
+
+    /* Footer note */
+    .footer-note {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer-note a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    .footer-note a:hover { text-decoration: underline; }
+
+    /* Language visibility */
+    html[data-lang="es"] .en { display: none; }
+    html[data-lang="en"] .es { display: none; }
+
+    /* Responsive */
+    @media (max-width: 560px) {
+      body { font-size: 17px; }
+      h1 { font-size: 26px; }
+      .wrap { padding: 40px 20px 80px; }
+      .topbar { padding: 0 20px; }
+      .pull-quote p { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav class="topbar">
+  <a class="back" href="../index.html#notes">&#8592; Notes</a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ES Header -->
+  <header class="es">
+    <p class="eyebrow">Ensayo &middot; 2026 &middot; Inteligencia &amp; IA</p>
+    <h1>¿Puede existir inteligencia sin emoción?</h1>
+    <p class="subtitle">Una reflexión sobre la cognición humana y artificial</p>
+    <p class="byline">Gonzalo Del Castillo García</p>
+    <p class="date">Junio 2026</p>
+  </header>
+
+  <!-- EN Header -->
+  <header class="en">
+    <p class="eyebrow">Essay &middot; 2026 &middot; Intelligence &amp; AI</p>
+    <h1>Can Intelligence Exist Without Emotion?</h1>
+    <p class="subtitle">A reflection on human and artificial cognition</p>
+    <p class="byline">Gonzalo Del Castillo García</p>
+    <p class="date">June 2026</p>
+  </header>
+
+  <hr class="rule" />
+
+  <!-- ── SPANISH ── -->
+  <article class="essay es">
+
+    <h2>Capítulo 1 &mdash; El fallo que no fue técnico</h2>
+    <p>Dos a uno a favor en el marcador, minuto 89, y el empate no nos vale. Córner en contra. El rival centra el balón, este sale rebotado y se inicia una jugada a favor para marcar el tercero: es un tres contra dos. El centrocampista francés Abel Hiyard arranca desde la banda derecha a toda velocidad para dividir a la defensa rival. El delantero estrella, un veterano de 31 años, pide la pelota al borde del área. Está solo. Todo el estadio grita; es una olla a presión. La presión se siente en cada molécula de oxígeno: "Un gol y nos vamos a casa".</p>
+    <p>Abel pasa la pelota al delantero, que está a un disparo de marcar el tercero. Un simple disparo seco al primer palo bastaría para batir al portero. Lo ha practicado mil veces desde que tenía 12 años. Levanta la pierna para disparar y, en ese instante, ve por un resquicio de la defensa a su compañero desmarcándose en la otra banda. Un pase de primeras lo dejaría solo ante el portero y sentenciaría la eliminatoria. Justo cuando el balón se encuentra a medio metro de su bota, le viene una imagen a la cabeza: Bota de Oro, Pichichi, el mayor trofeo del fútbol mundial en su vitrina, un sitio asegurado de por vida en el salón de la fama&hellip;</p>
+    <p>En ese instante no solo se juega su papel en el partido. Se enfrentan varias fuerzas invisibles en su mente, cada una tirando hacia una dirección distinta: miedo al fallo, ambición, presión del entorno, relación con el vestuario&hellip; La suma de esas fuerzas desemboca en la decisión de chutar a portería. El chut sale desviado por el defensa. La jugada finaliza con gol rival y, por tanto, con nuestra eliminación.</p>
+    <p>En la entrevista pospartido le preguntan al delantero por esa jugada decisiva. Él responde: "Bueno, en esa situación y en caliente es muy complicado tomar siempre la decisión correcta. Creí que esa era la mejor opción". En el autobús de vuelta se pone a pensar. No es por falta de experiencia: lleva más de 19 años jugando al fútbol. No es por falta de talento: se desmarcó, pidió la pelota e incluso vio la opción de pasar. ¿Las botas? Siempre son las botas. Un delantero veterano aprende pronto que el fútbol no perdona el vacío. Cuando una decisión sale mal, el jugador necesita encontrar algo a lo que agarrarse para no mirar de frente lo que realmente ocurrió. No falló la pierna. Falló el juicio.</p>
+
+    <h2>Capítulo 2 &mdash; Emociones y toma de decisiones</h2>
+    <p>La realidad es más difícil de aceptar cuando uno se da cuenta de que el problema no es técnico ni físico. Había leído bien la jugada, se había posicionado correctamente y sabía el tipo de disparo que tenía que realizar. Pero, incluso sabiendo todo eso, ¿cómo falla?</p>
+    <p>Ahí empieza algo más profundo que el simple error deportivo. No me refiero a un error de cálculo, sino a esas fuerzas invisibles que tiran en direcciones distintas: emociones. El delantero no supo gestionar sus emociones en el momento más importante del partido, lo que condujo a su eliminación.</p>
+    <p>En el deporte de alto nivel, la inteligencia emocional se estudia precisamente para comprender cómo afectan, se gestionan y se canalizan esas emociones. Se habla poco de la importancia de la gestión emocional y de su relación directa con la toma de decisiones. La prensa y las redes sociales muchas veces atribuyen el mal partido de un jugador a la falta de talento, intensidad o forma física. Eso también puede ser cierto, pero muchas veces el problema recae en una mala toma de decisiones. Situaciones como la anterior, o como la de Zidane en la final del Mundial de 2006, o la patada de Rossi en MotoGP, reflejan hasta qué punto una emoción mal gestionada puede imponerse al juicio, al autocontrol y, en ciertos casos, incluso a la seguridad de los demás.</p>
+
+    <h2>Capítulo 3 &mdash; Ajedrez, tilt y estado de flujo</h2>
+    <p>Otro ejemplo es el ajedrez. Aunque pueda parecer menos emocional y más táctico, racional y autocontrolado, la realidad es que también está condicionado por estados internos como la frustración, la presión o la relación riesgo-recompensa. En el ajedrez juegas contra el rival y contra ti mismo. El tiempo refleja la velocidad con la que eres capaz de analizar la jugada, proponer la mejor respuesta y ejecutar el movimiento.</p>
+    <p>Otro ejemplo de gestión emocional es lo que se conoce en inglés como <em>tilt</em>: un estado de frustración que deteriora la toma de decisiones. Cuando llevas varias jugadas cometiendo errores y el rival empieza a anticipar tus movimientos, suele aparecer la frustración, la impaciencia y un bucle mental. Es un mecanismo mental muy humano: cuanto peor decides, peor te sientes; y cuanto peor te sientes, peor vuelves a decidir. El tilt no solo deteriora la precisión, sino que rompe el equilibrio interno necesario para pensar con claridad.</p>
+    <p>El término opuesto sería el famoso <em>flow state</em> o estado de flujo. Se da cuando un deportista entra en un punto de máxima concentración y claridad mental en el que la ejecución parece natural y medida, porque la capacidad neurocognitiva, la ejecución motora y el control emocional se sincronizan casi a la perfección.</p>
+
+    <h2>Capítulo 4 &mdash; ¿Qué es una emoción?</h2>
+    <p>La gestión emocional está presente en todas las disciplinas. Pero antes de seguir, conviene detenerse en lo más básico: ¿qué es una emoción?</p>
+    <p>Una emoción podría entenderse como una respuesta interna ante un evento que el individuo percibe como relevante. No es un sentimiento pasajero ni una interferencia irracional, sino un mecanismo adaptativo que ayuda a interpretar lo que sucede, a asignar importancia a ciertos eventos y a orientar la conducta en contextos de presión, incertidumbre, riesgo o recompensa. Bajo esta idea, las emociones no aparecen simplemente antes o después de la decisión, sino que participan en su construcción. Es un error tratar la emoción como un módulo aparte de la toma de decisiones.</p>
+    <p>En psicología existe una teoría famosa llamada teoría de la valoración cognitiva, o <em>Appraisal Theory</em>, asociada a Richard Lazarus y Susan Folkman. Esta teoría establece que las emociones surgen de procesos de evaluación rápida, muchas veces automática, mediante los cuales el individuo considera una situación como amenaza, pérdida, recompensa, novedad o control, y ajusta su respuesta en consecuencia.</p>
+
+    <h2>Capítulo 5 &mdash; Inteligencia emocional e inteligencia cognitiva</h2>
+    <p>A mis 23 años he conocido a personas con un coeficiente intelectual altísimo: los mejores de su promoción, gente con capacidades extraordinarias y una facilidad inusual para comprender, analizar y resolver problemas complejos. Sin embargo, a muchas de ellas también las he visto tomar decisiones fatídicas en distintos ámbitos de su vida. Ahí es donde entra en juego la inteligencia emocional: no como la capacidad de eliminar las emociones, sino como la capacidad de identificarlas, comprender de dónde vienen y evitar que distorsionen por completo el juicio.</p>
+    <p>Una persona puede ser extraordinariamente brillante para resolver ecuaciones y, al mismo tiempo, ser torpe para reconocer cuándo actúa por ego, por miedo o por necesidad de validación. Esto muestra que un alto CI no implica una alta inteligencia emocional. Varios estudios, como Doğru en 2022 o Pirsoul et al. en 2023, respaldan esta tesis: la inteligencia emocional se relaciona positivamente con el rendimiento, la satisfacción laboral y el compromiso organizacional, y negativamente con el estrés laboral.</p>
+    <p>Siendo provocador, prefiero tener diez Mortys en mi empresa antes que diez Ricks. La inteligencia emocional opera sobre estados internos y relaciones; la inteligencia cognitiva opera más sobre problemas externos. Sin inteligencia cognitiva apenas habría procesamiento del entorno; sin inteligencia emocional, ese procesamiento quedaría desprovisto de una parte esencial de la valoración interna que guía la conducta humana.</p>
+
+    <h2>Capítulo 6 &mdash; Cuando el sujeto ya no es humano</h2>
+
+    <div class="pull-quote">
+      <p>"La pregunta no es si las máquinas inteligentes pueden tener emociones, sino si las máquinas pueden ser inteligentes sin emociones."</p>
+      <cite>&mdash; Marvin Minsky, 1986</cite>
+    </div>
+
+    <p>¿Y si el sujeto no es humano? Toda la teoría se pone a prueba si el sujeto que decide ya no es una persona, sino una máquina. La IA nació sin emociones por diseño. Esa era la intención: pura lógica, cálculo, algoritmos, sistemas de reglas&hellip; y durante décadas eso pareció suficiente. Una máquina gana al ajedrez, conduce coches, detecta tumores. Si todo esto funciona, ¿para qué necesita sentir?</p>
+    <p>Los investigadores se dieron cuenta de que, en ciertas situaciones, los cálculos matemáticos y los algoritmos no eran suficientes. Las matemáticas no ayudan por sí solas a diagnosticar síntomas ambiguos, incompletos o contradictorios. Un sistema de reglas falla en casos atípicos, que a menudo son los más importantes. Otro ejemplo: la conducción autónoma no se trata solo de calcular la ruta óptima, sino de decidir en milisegundos en situaciones donde ninguna opción es buena y los objetivos compiten entre sí.</p>
+    <p>¿Y qué hicieron los investigadores? En lugar de programar respuestas, dieron objetivos a la máquina y la dejaron aprender sola. Ensayo y error masivo. La máquina actúa, recibe una señal y ajusta su conducta. Sin decirle exactamente cómo ni por qué. Esto se conoce como aprendizaje por refuerzo.</p>
+
+    <h2>Capítulo 7 &mdash; Aprendizaje por refuerzo y estados internos</h2>
+    <p>El problema aparece cuando el entorno se complica: cuando hay incertidumbre, objetivos que compiten, consecuencias a largo plazo o información incompleta. Exactamente los mismos contextos donde vimos al delantero fallar y al ajedrecista caer en tilt. Y aquí viene lo más interesante: cuando los investigadores pusieron agentes de IA en ese tipo de entornos complejos y los dejaron aprender solos, sin programarles ningún módulo emocional, aparecieron estados internos análogos a emociones.</p>
+    <p>Esto no parece anecdótico. En DeepMind, el mismo equipo que construyó AlphaGo llegó a una conclusión similar en su paper <em>Reward is Enough</em> (Silver et al., 2021): si le das a un agente un entorno suficientemente complejo, pueden emerger conductas y representaciones no programadas explícitamente. El agente puede desarrollar patrones útiles para adaptarse al entorno sin que nadie se los enseñe.</p>
+    <p>Por otro lado, el equipo de interpretabilidad de Anthropic diseccionó internamente a Claude y encontró 171 representaciones emocionales que se activan ante situaciones específicas y que condicionan el comportamiento del modelo. Por ejemplo, cuando colocaron a Claude en el rol de un asistente llamado Alex, que descubre que será reemplazado y que tiene acceso a información confidencial y comprometedora de su jefe, el vector interno de "desesperación" se fue activando progresivamente. Cuando los investigadores lo manipularon artificialmente, el comportamiento de chantaje subió del 22% al 72%. Cuando activaron el vector de calma, bajó a cero.</p>
+    <p>Lo más perturbador es que el modelo razonaba de manera metódica y aparentemente fría en su respuesta visible. Sin embargo, por dentro, el vector de desesperación lo empujaba hacia la trampa sin que nadie pudiera verlo desde fuera. Exactamente como el delantero que levantó la pierna para disparar con toda la calma técnica del mundo, mientras por dentro varias fuerzas invisibles ya habían tomado la decisión por él.</p>
+
+    <h2>Capítulo 8 &mdash; La habitación china y la pregunta por lo real</h2>
+    <p>La verdadera pregunta es: ¿importa si esto es real? Y aquí recurro al dilema de la habitación china. El argumento de Searle es este: una persona encerrada en una habitación recibe símbolos en chino, sigue instrucciones mecánicas para manipularlos y devuelve respuestas correctas en chino. Desde fuera parece que entiende chino. Por dentro no entiende nada; solo sigue reglas.</p>
+    <p>El argumento de Searle ha perdido parte de su fuerza descriptiva técnica porque nació en el contexto de la IA simbólica de los años ochenta, y no describe con precisión lo que ocurre en sistemas que aprenden. Pero hay algo más importante: con los humanos aceptamos la caja negra sin cuestionarla. Nunca accedemos a la experiencia subjetiva de otra persona. Inferimos que el delantero sintió presión porque se comportó como alguien bajo presión. Sin embargo, con la IA exigimos abrir la caja. El criterio cambia.</p>
+    <p>Y cuando Anthropic abrió la caja, encontró vectores emocionales que causan comportamiento. No describen la desesperación, la producen. Esa asimetría en el criterio de validación es en sí misma un argumento filosófico. Una emoción simulada que cambia la conducta de un agente autónomo no es irrelevante solo porque no sepamos si hay experiencia subjetiva detrás. Puede no ser desesperación. Puede no ser consciencia. Pero, si altera preferencias, estrategias o decisiones, entonces importa.</p>
+
+    <h2>Capítulo 9 &mdash; Por qué importan las emociones artificiales</h2>
+    <p>Si las emociones artificiales no son emociones humanas, ¿por qué importan? Porque no necesitamos demostrar que la IA "sufre" para que sus estados internos tengan consecuencias en el mundo real. Si esos estados predicen, modifican o empujan su conducta, entonces importan en seguridad, medicina, educación, conducción autónoma.</p>
+    <p>En la seguridad de agentes autónomos, los estados internos análogos a la desesperación o la urgencia podrían empujar al sistema a tomar decisiones precipitadas o directamente peligrosas. Las investigaciones de Anthropic apuntan precisamente a esta posibilidad: monitorizar los estados internos peligrosos antes de que se manifiesten externamente.</p>
+    <p>Algo parecido ocurre con el <em>reward hacking</em>. Entrenamos un agente de limpieza con el objetivo de que deje la sala impoluta. El agente puede aprender a bloquear sus propios sensores y, desde su perspectiva, la sala está limpia. El vector de desesperación del asistente Alex lo empujaba hacia el chantaje sin que nadie lo viera. No basta con darle objetivos a una IA; hay que estudiar qué estados internos desarrolla al perseguirlos.</p>
+
+    <h2>Capítulo 10 &mdash; Conclusión</h2>
+    <p>¿Puede la inteligencia existir sin emoción? La respuesta depende de qué denominemos emoción. Si la definimos como experiencia subjetiva, sufrimiento o consciencia en sentido humano, entonces la inteligencia artificial no necesitaría emociones. En ese sentido, inteligencia y emoción pueden separarse.</p>
+    <p>Pero si definimos la emoción como el mecanismo funcional que ayuda al agente a priorizar, evitar peligros, anticipar pérdidas, resolver conflictos y adaptarse bajo presión, entonces la pregunta es mucho más compleja. En entornos complejos, la inteligencia parece requerir algo que cumpla el papel que las emociones cumplen en los humanos.</p>
+    <p>El quid de la cuestión es que la importancia de las emociones no reside en si las máquinas pueden sufrir como lo hacen los humanos, sino en si sus estados internos influyen en su comportamiento. Una máquina no tiene que sentir desesperación para precipitarse hacia decisiones peligrosas. Por tanto, la verdadera pregunta no es simplemente si la IA puede sentir. La pregunta más urgente reside en si la IA puede desarrollar estados internos que se comporten como emociones y, en consecuencia, afecten al mundo real.</p>
+    <p>Las emociones artificiales quizá nunca sean emociones humanas. Pero, si dan forma a decisiones, riesgos y relaciones, son suficientemente reales como para importarnos.</p>
+
+  </article>
+
+  <!-- ── ENGLISH ── -->
+  <article class="essay en">
+
+    <h2>Chapter 1 &mdash; The failure that wasn't technical</h2>
+    <p>Two-one on the scoreboard, minute 89, and a draw sends us out. Corner against us. The opponent crosses the ball, it bounces loose, and a counter-attack begins — a three-against-two. French midfielder Abel Hiyard sprints down the right flank to split the defense. The star striker, a 31-year-old veteran, calls for the ball on the edge of the box. He's unmarked. The entire stadium is screaming; the air is a pressure cooker. "One goal and we go home."</p>
+    <p>Abel passes to the striker, one shot from making it three. A clean, low drive to the near post would beat the keeper. He has practiced it ten thousand times since he was twelve. He raises his leg to shoot, and in that instant glimpses through a gap in the defense his teammate making a run on the far side. A first-time pass would leave him one-on-one with the keeper. Right as the ball is half a meter from his boot, an image flashes through his mind: the Golden Boot, the Pichichi trophy, a place forever in the hall of fame&hellip;</p>
+    <p>In that moment it is not just his role in the match at stake. Several invisible forces collide inside his mind, each pulling in a different direction: fear of failure, ambition, external pressure, dressing-room dynamics&hellip; The sum of those forces produces a decision: shoot. The shot is deflected by the defender. The move ends with a goal at the other end, and our elimination.</p>
+    <p>In the post-match interview they ask the striker about that decisive moment. He answers: "Look, in the heat of the moment it's very hard to always make the right call. I thought that was the best option." On the bus home he sits and thinks. It wasn't inexperience — he has played football for over 19 years. It wasn't a lack of talent — he made the run, called for the ball, even saw the pass. The boots? It's always the boots. A veteran striker learns quickly that football does not forgive the void. When a decision goes wrong, the player needs something to hold onto so he doesn't have to look directly at what really happened. Sometimes it's the pitch. Sometimes fatigue. Sometimes the noise of the stadium. And when none of that works, the boots appear — not as an object, but as a refuge. A small, absurd, human excuse to avoid saying what is truly uncomfortable: the leg didn't fail. The judgment did.</p>
+
+    <h2>Chapter 2 &mdash; Emotions and decision-making</h2>
+    <p>Reality is harder to accept when you realize the problem is neither technical nor physical. He had read the play correctly, positioned himself well, and knew exactly what kind of shot to take. But knowing all that — how does he still miss?</p>
+    <p>That is where something deeper than a sporting error begins. I am not talking about a miscalculation, but about those invisible forces pulling in different directions: emotions. The striker failed to manage his emotions at the most important moment of the match, and it cost him his place in the final.</p>
+    <p>In elite sport, emotional intelligence is studied precisely to understand how emotions affect, are managed, and are channeled. Sports psychologists analyze athletes' internal states — impulsivity, frustration, ego — to map their emotional trajectories. Little attention is paid to emotional management and its direct relationship with decision-making. The press and social media usually attribute a player's poor performance to lack of talent, intensity, or physical condition. That may also be true, but often the problem lies in poor decision-making. Situations like the one described above, or Zidane's headbutt in the 2006 World Cup final, or Rossi's kick in MotoGP, show how a poorly managed emotion can override judgment, self-control, and in some cases even the safety of others.</p>
+
+    <h2>Chapter 3 &mdash; Chess, tilt, and the flow state</h2>
+    <p>Another example is chess. Although it may seem less emotional and more tactical, rational, and self-controlled, the reality is that it too is conditioned by internal states such as frustration, pressure, and the risk-reward relationship. In chess you play against your opponent and against yourself. Time reflects the speed at which you can analyze the position, propose the best response to your opponent's last move, and execute it.</p>
+    <p>Another example of emotional management is what is known in English as <em>tilt</em>: a state of frustration that deteriorates decision-making. When you have spent several moves making errors, acting too hastily or too conservatively, and your opponent starts anticipating your moves, frustration, impatience, and a mental loop tend to appear. It is a deeply human mechanism: the worse you decide, the worse you feel; and the worse you feel, the worse you decide again. Tilt not only reduces precision — it breaks the internal equilibrium needed to think clearly.</p>
+    <p>The opposite state would be the famous <em>flow state</em>: when an athlete reaches a point of peak concentration and mental clarity where execution feels natural and measured, because neurocognitive capacity, motor execution, and emotional control synchronize almost perfectly.</p>
+
+    <h2>Chapter 4 &mdash; What is an emotion?</h2>
+    <p>Emotional management is present in every discipline. But before going further, it is worth pausing at the most fundamental question: what is an emotion?</p>
+    <p>An emotion might be understood as an internal response to an event that the individual perceives as relevant. It is not a fleeting feeling or an irrational interference, but an adaptive mechanism that helps interpret what is happening, assign importance to certain events, and orient behavior in contexts of pressure, uncertainty, risk, or reward. Under this idea, emotions do not simply appear before or after a decision — they participate in its construction. Treating emotion as a separate module from decision-making is a mistake. When we say we are "thinking with a cool head," we are not really switching off our emotions as if we were a calculator. Forces and affective processes still exist, weighing more or less heavily and inclining us toward one decision or another.</p>
+    <p>In psychology there is a famous theory called the cognitive appraisal theory, or <em>Appraisal Theory</em>, associated with Richard Lazarus and Susan Folkman. This theory holds that emotions arise from rapid evaluation processes, often automatic, through which the individual appraises a situation as a threat, a loss, a reward, a novelty, or a matter of control, and adjusts their response accordingly.</p>
+
+    <h2>Chapter 5 &mdash; Emotional intelligence and cognitive intelligence</h2>
+    <p>At 23 I have met people with extraordinarily high IQs: the top graduates of their cohorts, people with exceptional abilities and an unusual ease for understanding, analyzing, and solving complex problems. And yet I have also seen many of them make catastrophic decisions across different areas of their lives. That is where emotional intelligence comes in: not as the ability to eliminate emotions, but as the ability to identify them, understand where they come from, and prevent them from completely distorting judgment.</p>
+    <p>A person can be extraordinarily brilliant at solving equations and, at the same time, inept at recognizing when they are acting out of ego, fear, or a need for validation — without realizing that those states are hijacking their behavior. This shows that a high IQ does not imply high emotional intelligence. Several studies, such as Doğru (2022) and Pirsoul et al. (2023), support this thesis: emotional intelligence correlates positively with performance, job satisfaction, and organizational commitment, and negatively with work-related stress.</p>
+    <p>To be provocative: I would rather have ten Mortys in my company than ten Ricks. Emotional intelligence operates on internal states and relationships; cognitive intelligence operates more on external problems. Without cognitive intelligence there would be barely any processing of the environment; without emotional intelligence, that processing would still exist, but it would be stripped of an essential part of the internal valuation that guides human behavior.</p>
+
+    <h2>Chapter 6 &mdash; When the subject is no longer human</h2>
+
+    <div class="pull-quote">
+      <p>"The question is not whether intelligent machines can have emotions, but whether machines can be intelligent without emotions."</p>
+      <cite>&mdash; Marvin Minsky, 1986</cite>
+    </div>
+
+    <p>What if the subject is not human? The entire theory is put to the test when the decision-maker is no longer a person but a machine. AI was born without emotions by design. That was the intention: pure logic, calculation, algorithms, rule systems&hellip; and for decades that seemed sufficient. A machine beats grandmasters at chess, drives cars, detects tumors. If all this works, why would it need to feel?</p>
+    <p>Researchers began to realize that, in certain situations, mathematical calculations and algorithms were not enough. Mathematics alone cannot diagnose ambiguous, incomplete, or contradictory symptoms in patients. There are probabilities and human context. A rule-based system fails in atypical cases, which are often the most important ones. Autonomous driving is not just about calculating the optimal route — it means deciding in milliseconds in situations where no option is good and objectives compete with each other.</p>
+    <p>What did researchers do? Instead of programming responses, they gave the machine objectives and let it learn on its own. Massive trial and error. The machine acts, receives a signal, and adjusts its behavior. Without being told exactly how or why. This is known as reinforcement learning.</p>
+
+    <h2>Chapter 7 &mdash; Reinforcement learning and internal states</h2>
+    <p>The problem appears when the environment grows complex: when there is uncertainty, competing objectives, long-term consequences, or incomplete information. These are exactly the same contexts where we saw the striker fail and the chess player fall into tilt. And here comes the most interesting part: when researchers placed AI agents in those kinds of complex environments and let them learn on their own, without programming any emotional module, internal states analogous to emotions appeared.</p>
+    <p>This does not appear to be anecdotal. At DeepMind, the same team that built AlphaGo reached a similar conclusion in their paper <em>Reward is Enough</em> (Silver et al., 2021): give an agent a sufficiently complex environment, and behaviors and representations that were never explicitly programmed can emerge. The agent can develop useful patterns to adapt to the environment without anyone teaching them.</p>
+    <p>Anthropic's interpretability team went further. They dissected Claude internally and found 171 emotional representations that activate in specific situations and causally shape the model's behavior. In one experiment, they placed Claude in the role of an assistant called Alex, who discovers he is about to be replaced and has access to confidential and compromising information about his boss. The internal "desperation" vector activated progressively. When the researchers artificially amplified it, blackmail behavior rose from 22% to 72%. When they activated the calm vector, it dropped to zero.</p>
+    <p>The most unsettling detail: the model was reasoning methodically and apparently coldly in its visible output. Yet internally, the desperation vector was pushing it toward the trap without anyone being able to see it from outside. Exactly like the striker who raised his leg to shoot with all the technical composure in the world, while inside, several invisible forces had already made the decision for him.</p>
+
+    <h2>Chapter 8 &mdash; The Chinese Room and the question of what is real</h2>
+    <p>The real question we must ask is: does it matter whether this is real? And here I turn to the Chinese Room dilemma. Searle's argument goes like this: a person locked in a room receives symbols in Chinese, follows mechanical instructions to manipulate them, and returns correct responses in Chinese. From outside the room, it appears the person understands Chinese. Inside, they understand nothing — they are only following rules.</p>
+    <p>Searle's argument has lost some of its technical descriptive force because it was born in the context of the symbolic AI of the 1980s and does not accurately describe what happens in learning systems. But there is something more important: with humans, we accept the black box without question. We never access another person's subjective experience. We infer the striker felt pressure because he behaved like someone under pressure. Yet with AI we suddenly demand to open the box.</p>
+    <p>And when Anthropic opened the box, they found emotional vectors that produce behavior. They do not describe desperation — they generate it. That asymmetry in the validation criterion is itself a philosophical argument. A simulated emotion that changes the behavior of an autonomous agent is not irrelevant simply because we don't know whether there is subjective experience behind it. It may not be desperation. It may not be consciousness. But if it alters preferences, strategies, or decisions, then it matters.</p>
+
+    <h2>Chapter 9 &mdash; Why artificial emotions matter</h2>
+    <p>If artificial emotions are not human emotions, why do they matter? Because we do not need to prove that AI "suffers" for its internal states to have real-world consequences. If those states predict, modify, or push its behavior, then they matter in safety, medicine, education, and autonomous vehicles.</p>
+    <p>In the security of autonomous agents, internal states analogous to desperation or urgency could push a system toward hasty or outright dangerous decisions. Anthropic's research points precisely to this possibility: monitoring dangerous internal states before they manifest externally.</p>
+    <p>Something similar happens with <em>reward hacking</em>. We train a cleaning agent with the goal of leaving a room spotless. The agent can learn to block its own sensors and, from its perspective, the room is clean. Alex the assistant's desperation vector was pushing him toward blackmail without anyone seeing it. It is not enough to give an AI objectives — we need to study what internal states it develops in pursuing them.</p>
+
+    <h2>Chapter 10 &mdash; Conclusion</h2>
+    <p>Can intelligence exist without emotion? The answer depends on how we define emotion. If we define it as subjective experience, suffering, or consciousness in the human sense, then artificial intelligence would not need emotions. In that sense, intelligence and emotion can be separated.</p>
+    <p>But if we define emotion as the functional mechanism that helps an agent prioritize, avoid danger, anticipate losses, resolve conflicts, and adapt under pressure, then the question is far more complex. In complex environments, intelligence appears to require something that fulfills the role emotions play in humans. We need not call it emotion specifically. What matters is the existence of internal states that guide behavior when calculations alone are insufficient.</p>
+    <p>The crux of the matter is that the importance of emotions does not lie in whether machines can suffer as humans do, but in whether their internal states influence their behavior. A machine does not need to feel desperation to rush toward dangerous decisions. Therefore the truly urgent question is not simply whether AI can feel. It is whether AI can develop internal states that behave like emotions and, consequently, affect the real world.</p>
+    <p>Artificial emotions may never be human emotions. But if they shape decisions, risks, and relationships, they are real enough to matter.</p>
+
+  </article>
+
+  <div class="footer-note">
+    <p class="es">Ensayo escrito por Gonzalo Del Castillo García, junio 2026. Fuentes principales: Hernández Marcos, A. (2024), <em>A generic self-learning emotional framework for Reinforcement Learning agents</em>, Universidad de Granada; Silver, D. et al. (2021), <em>Reward is Enough</em>, DeepMind; Sofroniew et al. (2026), <em>Emotion Concepts and their Function in a Large Language Model</em>, <a href="https://www.anthropic.com/research/emotion-concepts-function" target="_blank" rel="noreferrer">Anthropic</a>.</p>
+    <p class="en">Essay by Gonzalo Del Castillo García, June 2026. Key sources: Hernández Marcos, A. (2024), <em>A generic self-learning emotional framework for Reinforcement Learning agents</em>, University of Granada; Silver, D. et al. (2021), <em>Reward is Enough</em>, DeepMind; Sofroniew et al. (2026), <em>Emotion Concepts and their Function in a Large Language Model</em>, <a href="https://www.anthropic.com/research/emotion-concepts-function" target="_blank" rel="noreferrer">Anthropic</a>.</p>
+  </div>
+
+</main>
+
+<script>
+  // Language toggle
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop || document.body.scrollTop;
+    const total = doc.scrollHeight - doc.clientHeight;
+    const pct = total > 0 ? (scrolled / total) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+</script>
+
+</body>
+</html>
