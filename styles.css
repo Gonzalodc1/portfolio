@@ -1386,55 +1386,6 @@ body:not([data-theme="dark"]) .background span:nth-child(5n) {
   will-change: transform, filter;
 }
 
-.gia-art {
-  background:
-    radial-gradient(circle at 50% 44%, color-mix(in srgb, var(--cyan) 22%, transparent), transparent 34%),
-    linear-gradient(145deg, color-mix(in srgb, var(--panel-strong) 88%, var(--cyan)), var(--panel));
-}
-
-.gia-art::before,
-.gia-art::after {
-  content: "";
-  position: absolute;
-  inset: 20%;
-  border-radius: 999px;
-  pointer-events: none;
-}
-
-.gia-art::before {
-  border: 1px solid color-mix(in srgb, var(--cyan) 36%, transparent);
-  animation: giaOrbitPulse 5.2s ease-in-out infinite;
-}
-
-.gia-art::after {
-  background:
-    conic-gradient(from 90deg, transparent, color-mix(in srgb, var(--cyan) 28%, transparent), transparent 38%);
-  opacity: 0.42;
-  animation: giaOrbitSpin 9s linear infinite;
-}
-
-.gia-art img {
-  position: relative;
-  z-index: 1;
-  max-width: 58%;
-  max-height: 58%;
-  padding: 1.7rem;
-  filter:
-    brightness(0)
-    invert(1)
-    drop-shadow(0 14px 20px color-mix(in srgb, var(--cyan) 28%, transparent));
-  animation: giaRobotFloat 4.6s ease-in-out infinite;
-  will-change: transform, filter;
-}
-
-.gia-entry-card:hover .gia-art img {
-  animation-duration: 3.2s;
-  filter:
-    brightness(0)
-    invert(1)
-    drop-shadow(0 18px 26px color-mix(in srgb, var(--cyan) 42%, transparent));
-}
-
 .biometric-entry-card {
   display: block;
 }
@@ -4018,34 +3969,6 @@ body[data-theme="dark"] .profile-callout path {
   }
 }
 
-@keyframes giaRobotFloat {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(0, -9px, 0) scale(1.04);
-  }
-}
-
-@keyframes giaOrbitPulse {
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: scale(0.84);
-  }
-  50% {
-    opacity: 0.58;
-    transform: scale(1.12);
-  }
-}
-
-@keyframes giaOrbitSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes biometricDetailsIn {
   to {
     opacity: 1;
@@ -4306,9 +4229,6 @@ body[data-theme="dark"] .profile-callout path {
   .brain-art::before,
   .brain-art::after,
   .brain-svg,
-  .gia-art::before,
-  .gia-art::after,
-  .gia-art img,
   .voice-auth-svg .voice-panel,
   .voice-wave,
   .voice-link,
@@ -4511,8 +4431,7 @@ body[data-theme="dark"] .profile-callout path {
     min-height: 170px;
   }
 
-  .mini-art img,
-  .gia-art img {
+  .mini-art img {
     padding: 1.25rem;
   }
 
