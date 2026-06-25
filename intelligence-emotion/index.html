@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Can Intelligence Exist Without Emotion? — Gonzalo Del Castillo García</title>
   <meta name="description" content="A reflection on emotional and cognitive intelligence in humans and machines." />
+  <script>
+    // Apply saved theme before paint to avoid flash (shared with portfolio home).
+    (function () {
+      var t = localStorage.getItem("portfolio-theme") || "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css" />
   <style>
     :root {
@@ -12,13 +19,30 @@
       --muted: #5b5b5b;
       --line: #e2e0da;
       --bg: #fbfaf7;
+      --bg-blur: rgba(251, 250, 247, 0.92);
       --accent: #1c4f8a;
       --link: #1c4f8a;
+      --quote-bg: rgba(28, 79, 138, 0.04);
       --serif: "Computer Modern Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif;
     }
 
+    html[data-theme="dark"] {
+      --ink: #e7e4dd;
+      --muted: #9a9488;
+      --line: #2c2c29;
+      --bg: #14140f;
+      --bg-blur: rgba(20, 20, 15, 0.92);
+      --accent: #7eb6e6;
+      --link: #7eb6e6;
+      --quote-bg: rgba(126, 182, 230, 0.07);
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+    body { transition: background 0.25s ease, color 0.25s ease; }
 
     body {
       background: var(--bg);
@@ -45,7 +69,7 @@
     .topbar {
       position: sticky;
       top: 0;
-      background: rgba(251, 250, 247, 0.92);
+      background: var(--bg-blur);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
@@ -55,6 +79,32 @@
       align-items: center;
       justify-content: space-between;
       height: 52px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 15px;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .theme-toggle:hover {
+      color: var(--ink);
+      border-color: var(--muted);
     }
 
     .back {
@@ -184,7 +234,7 @@
       margin: 40px 0;
       padding: 24px 28px;
       border-left: 3px solid var(--accent);
-      background: rgba(28, 79, 138, 0.04);
+      background: var(--quote-bg);
       border-radius: 0 6px 6px 0;
     }
 
@@ -239,9 +289,12 @@
 
 <nav class="topbar">
   <a class="back" href="../index.html#notes">&#8592; Notes</a>
-  <div class="lang-toggle">
-    <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  <div class="topbar-actions">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">&#9790;</button>
   </div>
 </nav>
 
@@ -409,6 +462,23 @@
     document.getElementById('btn-es').classList.toggle('active', lang === 'es');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   }
+
+  // Theme toggle (shared with portfolio home via localStorage)
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    var btn = document.getElementById('theme-toggle');
+    var isDark = theme === 'dark';
+    btn.innerHTML = isDark ? '&#9728;' : '&#9790;'; // sun / moon
+    btn.setAttribute('aria-label', isDark ? 'Enable light mode' : 'Enable dark mode');
+    btn.setAttribute('aria-pressed', String(isDark));
+  }
+  function toggleTheme() {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('portfolio-theme', next);
+  }
+  // Sync icon with the theme already applied in <head>
+  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
 
   // Reading progress bar
   window.addEventListener('scroll', () => {
