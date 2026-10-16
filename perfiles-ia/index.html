@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>«Trabajo en IA». ¿Pediatra o cirujano? — Gonzalo Del Castillo García</title>
+  <meta name="description" content="Decir «trabajo en IA» es como decir que eres médico: ¿pediatra o cirujano? Mi opinión sobre los perfiles de IA en el mercado laboral." />
+  <link rel="canonical" href="https://www.gonzalodelcastillo.com/perfiles-ia/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Gonzalo Del Castillo García" />
+  <meta property="og:title" content="«Trabajo en IA». ¿Pediatra o cirujano?" />
+  <meta property="og:description" content="Mi opinión sobre los perfiles de IA en el mercado laboral y por qué la etiqueta «IA» esconde roles muy distintos." />
+  <meta property="og:url" content="https://www.gonzalodelcastillo.com/perfiles-ia/" />
+  <meta property="og:image" content="https://www.gonzalodelcastillo.com/perfiles-ia/img/og-perfiles-ia.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="article:author" content="Gonzalo Del Castillo García" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script>
+    // Apply saved theme before paint to avoid flash (shared with portfolio home).
+    (function () {
+      var t = localStorage.getItem("portfolio-theme") || "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css" />
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #5b5b5b;
+      --line: #e2e0da;
+      --bg: #fbfaf7;
+      --bg-blur: rgba(251, 250, 247, 0.92);
+      --accent: #1c4f8a;
+      --link: #1c4f8a;
+      --serif: "Computer Modern Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif;
+    }
+
+    html[data-theme="dark"] {
+      --ink: #e7e4dd;
+      --muted: #9a9488;
+      --line: #2c2c29;
+      --bg: #14140f;
+      --bg-blur: rgba(20, 20, 15, 0.92);
+      --accent: #7eb6e6;
+      --link: #7eb6e6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    body { transition: background 0.25s ease, color 0.25s ease; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Reading progress bar */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent);
+      z-index: 100;
+      transition: width 0.1s linear;
+    }
+
+    /* Top nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      background: var(--bg-blur);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      z-index: 50;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 15px;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .theme-toggle:hover {
+      color: var(--ink);
+      border-color: var(--muted);
+    }
+
+    .back {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .back:hover { color: var(--ink); }
+
+    /* Main content */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 28px 120px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .byline {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      border: 0;
+      margin: 36px 0;
+    }
+
+    /* Post body */
+    .post p {
+      margin-bottom: 22px;
+    }
+
+    .post p.closing {
+      margin-top: 36px;
+      padding-left: 22px;
+      border-left: 3px solid var(--accent);
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    /* Figures */
+    .post figure {
+      margin: 40px 0;
+    }
+
+    .post figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .post figure.photo img {
+      border: 1px solid var(--line);
+    }
+
+    /* Vídeo de Lightcast */
+    .post figure.video video {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #f3e6dc;
+    }
+
+    .pause-btn {
+      font: inherit;
+      font-size: 13px;
+      padding: 1px 10px;
+      margin-right: 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pause-btn:hover { color: var(--ink); border-color: var(--muted); }
+
+    /* Portadas de los informes */
+    .covers-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .post figure .covers-row img {
+      width: min(46%, 260px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .post figcaption {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    /* Footer note */
+    .footer-note {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer-note p + p { margin-top: 12px; }
+
+    /* Responsive */
+    @media (max-width: 560px) {
+      body { font-size: 17px; }
+      h1 { font-size: 26px; }
+      .wrap { padding: 40px 20px 80px; }
+      .topbar { padding: 0 20px; }
+      .post p.closing { font-size: 18px; }
+      .covers-row { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav class="topbar">
+  <a class="back" href="../index.html#notes">&#8592; Notes</a>
+  <div class="topbar-actions">
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">&#9790;</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <header>
+    <p class="eyebrow">Opinión &middot; 2026 &middot; Mercado laboral &amp; IA</p>
+    <h1>«Trabajo en IA». ¿Pediatra o cirujano?</h1>
+    <p class="subtitle">Sobre los perfiles de IA en el mercado laboral</p>
+    <p class="byline">Gonzalo Del Castillo García</p>
+    <p class="date">Octubre 2026</p>
+  </header>
+
+  <hr class="rule" />
+
+  <article class="post">
+
+    <p>Hoy me han lanzado una pregunta que me ha dejado pensando sobre el estado actual de los perfiles de "IA" en el mundo laboral. Es una buena pregunta que merece ser respondida. En un sector tan dinámico no hay respuestas correctas, así que comparto mi opinión.</p>
+
+    <p>Para empezar, hay que conocer el estado actual de la IA en el mercado laboral. Por mi experiencia antes de incorporarme a Cold Culture y durante mi etapa como freelance, he observado pocas oportunidades de entrada y muchos candidatos interesados, gran parte de ellos con perfiles júnior o recién graduados.</p>
+
+    <figure class="video">
+      <video id="lightcast-video" autoplay muted loop playsinline preload="metadata"
+             poster="img/lightcast-ai-skills-fields-poster.webp" width="1120" height="480"
+             aria-label="Animación de una herramienta de Lightcast: se escribe una pregunta sobre qué áreas añaden más rápido habilidades de IA a sus ofertas de empleo, la herramienta indica que está generando una respuesta con datos de Lightcast y muestra porcentajes de crecimiento por área.">
+        <source src="img/lightcast-ai-skills-fields.mp4" type="video/mp4" />
+      </video>
+      <figcaption>
+        <button type="button" class="pause-btn" id="video-toggle" aria-pressed="false">Pausar animación</button>
+        Lightcast: una consulta a su herramienta sobre qué áreas incorporan antes habilidades de IA a sus ofertas. La respuesta la genera la propia herramienta a partir de datos de Lightcast.
+      </figcaption>
+    </figure>
+
+    <p>La evolución tan acelerada del sector genera mucho ruido (para bien, en mi opinión) y a las corporaciones les urge contratar perfiles de IA (ingeniero de IA, ingeniero de LLM, ingeniero de MLOps...) aun sin tener un rumbo claro y establecido. Salvo las startups y corporaciones que se dedican exclusivamente a la IA, el resto de empresas no tienen proyectos a gran escala que requieran contratar masivamente este tipo de perfiles.</p>
+
+    <figure class="covers">
+      <div class="covers-row">
+        <img src="img/lightcast-beyond-the-buzz.webp" width="640" height="829" loading="lazy"
+             alt="Portada del informe Beyond the Buzz de Lightcast: una persona de espaldas, sentada ante un escritorio al atardecer, con montañas al fondo." />
+        <img src="img/stanford-ai-index-2026.webp" width="640" height="798" loading="lazy"
+             alt="Portada del Artificial Intelligence Index Report 2026 de Stanford HAI, con un paisaje abstracto en tonos morados, verdes y azules." />
+      </div>
+      <figcaption>Lightcast, <em>Beyond the Buzz: Developing the AI Skills Employers Actually Need</em> (2025) · Stanford HAI, <em>Artificial Intelligence Index Report 2026</em>.</figcaption>
+    </figure>
+
+    <p>A esto se le añade el factor de adopción de estas tecnologías en cada tipo de perfil. A los perfiles cercanos a la jubilación, para quienes la curva de aprendizaje es pronunciada, estas tecnologías les causan respeto e incluso rechazo. Los perfiles de mediana edad y menos técnicos varían: algunos lo rechazan, otros recurren al topicazo de "la IA nos va a quitar el trabajo" y otros se esfuerzan por aprender y mantenerse al día.</p>
+
+    <p>Los más jóvenes son los que más rápido se adaptan y los más curiosos, sobre todo los más técnicos. En general, los perfiles técnicos (y que usan herramientas de IA en su día a día) son los que menos temen a la IA y los que más apuestan por ella, en cierto grado.</p>
+
+    <p>Sabiendo esto, la gente que no está muy informada acaba agrupando bajo la etiqueta «IA» perfiles con funciones muy diferentes. El término es súper amplio. Decir que te dedicas a la IA es como decir que eres médico. Ser especialista en seguridad de la IA no es lo mismo que ser ingeniero de IA. Ser pentester no es lo mismo que ser analista de ciberseguridad. Ser pediatra no es lo mismo que ser cirujano. Y así podría seguir.</p>
+
+    <p>Al ser un sector tan dinámico y "nuevo", no hay fronteras claras entre qué hace un rol u otro. Para alguien no técnico, esto puede llevar a comparar manzanas con peras o a esperar que un especialista en red teaming de IA asuma responsabilidades propias de un ingeniero de MLOps.</p>
+
+    <p>En mi opinión, saber utilizar herramientas de IA en tu día a día te ayuda a entender cómo funcionan las nuevas tecnologías, pero no te hace saber de "IA". El skill gap entre manejar herramientas (mediante prompting, skills o rutinas de automatización) y diseñar, evaluar, desplegar o proteger sistemas de IA es considerable. Del mismo modo, tener nociones de programación no equivale a ser desarrollador full stack.</p>
+
+    <figure class="photo">
+      <img src="img/datacamp-state-of-data-ai-literacy-2026.webp" width="1200" height="800" loading="lazy"
+           alt="Varias páginas del informe State of Data & AI Literacy 2026 de DataCamp, con gráficos sobre formación y brechas de habilidades en datos e IA." />
+      <figcaption>DataCamp, <em>State of Data &amp; AI Literacy 2026</em>: páginas del informe sobre formación y brechas de habilidades en datos e IA.</figcaption>
+    </figure>
+
+    <p>Por otro lado, el mercado se adapta a las nuevas tecnologías, y las empresas deben ser conscientes de ello y aplicar estrategias con visión de futuro, no parches inmediatos como onboardings o cursos baratos para utilizar herramientas sin saber cómo aplicarlas en cada caso. Aun así, en la gran mayoría de casos suele salir más barato implementar sistemas que se adapten a la empresa y faciliten el trabajo de los empleados que hacer que la empresa entera se adapte a una nueva herramienta. Pero cada caso es diferente.</p>
+
+    <p class="closing">Para mí, ahí está la clave: entender qué necesita la empresa y qué puede aportar cada perfil antes de contratar bajo una etiqueta tan amplia como «IA».</p>
+
+  </article>
+
+  <div class="footer-note">
+    <p>Gonzalo Del Castillo García, octubre 2026. Fuentes: Lightcast, <em>Beyond the Buzz</em> (2025) · DataCamp, <em>State of Data &amp; AI Literacy 2026</em> · Stanford HAI, <em>Artificial Intelligence Index Report 2026</em>.</p>
+    <p>Las imágenes son portadas y capturas de esos informes. Pertenecen a sus autores y se muestran aquí para ilustrar las fuentes.</p>
+  </div>
+
+</main>
+
+<script>
+  // Theme toggle (shared with portfolio home via localStorage)
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    var btn = document.getElementById('theme-toggle');
+    var isDark = theme === 'dark';
+    btn.innerHTML = isDark ? '&#9728;' : '&#9790;'; // sun / moon
+    btn.setAttribute('aria-label', isDark ? 'Enable light mode' : 'Enable dark mode');
+    btn.setAttribute('aria-pressed', String(isDark));
+  }
+  function toggleTheme() {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('portfolio-theme', next);
+  }
+  // Sync icon with the theme already applied in <head>
+  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+
+  // Lightcast video: pausable, and paused from the start if the visitor asked for less motion
+  (function () {
+    var v = document.getElementById('lightcast-video');
+    var b = document.getElementById('video-toggle');
+    if (!v || !b) return;
+    function sync() {
+      b.textContent = v.paused ? 'Reproducir animación' : 'Pausar animación';
+      b.setAttribute('aria-pressed', String(v.paused));
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    }
+    b.addEventListener('click', function () { if (v.paused) { v.play(); } else { v.pause(); } });
+    v.addEventListener('play', sync);
+    v.addEventListener('pause', sync);
+    sync();
+  })();
+
+  // Reading progress bar
+  window.addEventListener('scroll', function () {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    var pct = total > 0 ? (scrolled / total) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+</script>
+
+</body>
+</html>
