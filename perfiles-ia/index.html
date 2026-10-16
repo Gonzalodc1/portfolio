@@ -1,14 +1,17 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>«Trabajo en IA». ¿Pediatra o cirujano? — Gonzalo Del Castillo García</title>
   <meta name="description" content="Decir «trabajo en IA» es como decir que eres médico: ¿pediatra o cirujano? Mi opinión sobre los perfiles de IA en el mercado laboral." />
   <link rel="canonical" href="https://www.gonzalodelcastillo.com/perfiles-ia/" />
+  <link rel="alternate" hreflang="es" href="https://www.gonzalodelcastillo.com/perfiles-ia/" />
+  <link rel="alternate" hreflang="en" href="https://www.gonzalodelcastillo.com/perfiles-ia/?lang=en" />
 
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="es_ES" />
+  <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:site_name" content="Gonzalo Del Castillo García" />
   <meta property="og:title" content="«Trabajo en IA». ¿Pediatra o cirujano?" />
   <meta property="og:description" content="Mi opinión sobre los perfiles de IA en el mercado laboral y por qué la etiqueta «IA» esconde roles muy distintos." />
@@ -20,10 +23,16 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <script>
-    // Apply saved theme before paint to avoid flash (shared with portfolio home).
+    // Apply saved theme and requested language before paint to avoid a flash.
+    // Spanish is the default; /perfiles-ia/?lang=en opens the English version.
     (function () {
       var t = localStorage.getItem("portfolio-theme") || "light";
       document.documentElement.setAttribute("data-theme", t);
+      var m = /[?&]lang=(en|es)\b/.exec(location.search);
+      if (m) {
+        document.documentElement.setAttribute("data-lang", m[1]);
+        document.documentElement.setAttribute("lang", m[1]);
+      }
     })();
   </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css" />
@@ -68,6 +77,10 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
+
+    /* Language visibility */
+    html[data-lang="es"] .en { display: none; }
+    html[data-lang="en"] .es { display: none; }
 
     /* Reading progress bar */
     #progress-bar {
@@ -133,6 +146,37 @@
       transition: color 0.15s;
     }
     .back:hover { color: var(--ink); }
+
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      font-size: 13px;
+      font-family: var(--serif);
+    }
+
+    .lang-btn {
+      padding: 5px 14px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-btn.active {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: var(--line);
+      color: var(--ink);
+    }
 
     /* Main content */
     .wrap {
@@ -212,7 +256,14 @@
       border: 1px solid var(--line);
     }
 
-    /* Vídeo de Lightcast */
+    .post figcaption {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    /* Lightcast video */
     .post figure.video video {
       display: block;
       width: 100%;
@@ -236,7 +287,7 @@
     }
     .pause-btn:hover { color: var(--ink); border-color: var(--muted); }
 
-    /* Portadas de los informes */
+    /* Report covers */
     .covers-row {
       display: flex;
       justify-content: center;
@@ -247,13 +298,6 @@
     .post figure .covers-row img {
       width: min(46%, 260px);
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
-    }
-
-    .post figcaption {
-      margin-top: 14px;
-      font-size: 14px;
-      line-height: 1.55;
-      color: var(--muted);
     }
 
     /* Footer note */
@@ -286,13 +330,18 @@
 <nav class="topbar">
   <a class="back" href="../index.html#notes">&#8592; Notes</a>
   <div class="topbar-actions">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es', true)">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en', true)">EN</button>
+    </div>
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">&#9790;</button>
   </div>
 </nav>
 
 <main class="wrap">
 
-  <header>
+  <!-- ES Header -->
+  <header class="es">
     <p class="eyebrow">Opinión &middot; 2026 &middot; Mercado laboral &amp; IA</p>
     <h1>«Trabajo en IA». ¿Pediatra o cirujano?</h1>
     <p class="subtitle">Sobre los perfiles de IA en el mercado laboral</p>
@@ -300,68 +349,132 @@
     <p class="date">Octubre 2026</p>
   </header>
 
+  <!-- EN Header -->
+  <header class="en">
+    <p class="eyebrow">Opinion &middot; 2026 &middot; Job market &amp; AI</p>
+    <h1>&ldquo;I work in AI.&rdquo; Pediatrician or surgeon?</h1>
+    <p class="subtitle">On AI profiles in the job market</p>
+    <p class="byline">Gonzalo Del Castillo García</p>
+    <p class="date">October 2026</p>
+  </header>
+
   <hr class="rule" />
 
   <article class="post">
 
-    <p>Hoy me han lanzado una pregunta que me ha dejado pensando sobre el estado actual de los perfiles de "IA" en el mundo laboral. Es una buena pregunta que merece ser respondida. En un sector tan dinámico no hay respuestas correctas, así que comparto mi opinión.</p>
+    <p class="es">Hoy me han lanzado una pregunta que me ha dejado pensando sobre el estado actual de los perfiles de "IA" en el mundo laboral. Es una buena pregunta que merece ser respondida. En un sector tan dinámico no hay respuestas correctas, así que comparto mi opinión.</p>
+    <p class="en">Today I was asked a question that left me thinking about the current state of "AI" profiles in the job market. It's a good question and it deserves an answer. In such a dynamic sector there are no right answers, so I'm sharing my opinion.</p>
 
-    <p>Para empezar, hay que conocer el estado actual de la IA en el mercado laboral. Por mi experiencia antes de incorporarme a Cold Culture y durante mi etapa como freelance, he observado pocas oportunidades de entrada y muchos candidatos interesados, gran parte de ellos con perfiles júnior o recién graduados.</p>
+    <p class="es">Para empezar, hay que conocer el estado actual de la IA en el mercado laboral. Por mi experiencia antes de incorporarme a Cold Culture y durante mi etapa como freelance, he observado pocas oportunidades de entrada y muchos candidatos interesados, gran parte de ellos con perfiles júnior o recién graduados.</p>
+    <p class="en">To begin with, we need to understand the current state of AI in the job market. From my experience before joining Cold Culture and during my time as a freelancer, I've seen few entry-level opportunities and many interested candidates, a large share of them junior profiles or recent graduates.</p>
 
     <figure class="video">
       <video id="lightcast-video" autoplay muted loop playsinline preload="metadata"
              poster="img/lightcast-ai-skills-fields-poster.webp" width="1120" height="480"
+             data-alt-es="Animación de una herramienta de Lightcast: se escribe una pregunta sobre qué áreas añaden más rápido habilidades de IA a sus ofertas de empleo, la herramienta indica que está generando una respuesta con datos de Lightcast y muestra porcentajes de crecimiento por área."
+             data-alt-en="Animation of a Lightcast tool: a question is typed about which fields add AI skills to their job postings fastest, the tool says it is generating an answer from Lightcast data, and it shows growth percentages by field."
              aria-label="Animación de una herramienta de Lightcast: se escribe una pregunta sobre qué áreas añaden más rápido habilidades de IA a sus ofertas de empleo, la herramienta indica que está generando una respuesta con datos de Lightcast y muestra porcentajes de crecimiento por área.">
         <source src="img/lightcast-ai-skills-fields.mp4" type="video/mp4" />
       </video>
       <figcaption>
         <button type="button" class="pause-btn" id="video-toggle" aria-pressed="false">Pausar animación</button>
-        Lightcast: una consulta a su herramienta sobre qué áreas incorporan antes habilidades de IA a sus ofertas. La respuesta la genera la propia herramienta a partir de datos de Lightcast.
+        <span class="es">Lightcast: una consulta a su herramienta sobre qué áreas incorporan antes habilidades de IA a sus ofertas. La respuesta la genera la propia herramienta a partir de datos de Lightcast.</span>
+        <span class="en">Lightcast: a query to its tool about which fields are adding AI skills to their job postings the fastest. The answer is generated by the tool itself from Lightcast data.</span>
       </figcaption>
     </figure>
 
-    <p>La evolución tan acelerada del sector genera mucho ruido (para bien, en mi opinión) y a las corporaciones les urge contratar perfiles de IA (ingeniero de IA, ingeniero de LLM, ingeniero de MLOps...) aun sin tener un rumbo claro y establecido. Salvo las startups y corporaciones que se dedican exclusivamente a la IA, el resto de empresas no tienen proyectos a gran escala que requieran contratar masivamente este tipo de perfiles.</p>
+    <p class="es">La evolución tan acelerada del sector genera mucho ruido (para bien, en mi opinión) y a las corporaciones les urge contratar perfiles de IA (ingeniero de IA, ingeniero de LLM, ingeniero de MLOps...) aun sin tener un rumbo claro y establecido. Salvo las startups y corporaciones que se dedican exclusivamente a la IA, el resto de empresas no tienen proyectos a gran escala que requieran contratar masivamente este tipo de perfiles.</p>
+    <p class="en">The sector's rapid evolution creates a lot of noise (for the better, in my opinion), and companies are in a hurry to hire AI profiles (AI engineer, LLM engineer, MLOps engineer...) even without a clear, established direction. Apart from startups and corporations dedicated exclusively to AI, most companies don't have large-scale projects that would require hiring this kind of profile en masse.</p>
 
     <figure class="covers">
       <div class="covers-row">
         <img src="img/lightcast-beyond-the-buzz.webp" width="640" height="829" loading="lazy"
+             data-alt-es="Portada del informe Beyond the Buzz de Lightcast: una persona de espaldas, sentada ante un escritorio al atardecer, con montañas al fondo."
+             data-alt-en="Cover of Lightcast's Beyond the Buzz report: a person seen from behind, sitting at a desk at sunset, with mountains in the background."
              alt="Portada del informe Beyond the Buzz de Lightcast: una persona de espaldas, sentada ante un escritorio al atardecer, con montañas al fondo." />
         <img src="img/stanford-ai-index-2026.webp" width="640" height="798" loading="lazy"
+             data-alt-es="Portada del Artificial Intelligence Index Report 2026 de Stanford HAI, con un paisaje abstracto en tonos morados, verdes y azules."
+             data-alt-en="Cover of Stanford HAI's Artificial Intelligence Index Report 2026, with an abstract landscape in purple, green and blue tones."
              alt="Portada del Artificial Intelligence Index Report 2026 de Stanford HAI, con un paisaje abstracto en tonos morados, verdes y azules." />
       </div>
       <figcaption>Lightcast, <em>Beyond the Buzz: Developing the AI Skills Employers Actually Need</em> (2025) · Stanford HAI, <em>Artificial Intelligence Index Report 2026</em>.</figcaption>
     </figure>
 
-    <p>A esto se le añade el factor de adopción de estas tecnologías en cada tipo de perfil. A los perfiles cercanos a la jubilación, para quienes la curva de aprendizaje es pronunciada, estas tecnologías les causan respeto e incluso rechazo. Los perfiles de mediana edad y menos técnicos varían: algunos lo rechazan, otros recurren al topicazo de "la IA nos va a quitar el trabajo" y otros se esfuerzan por aprender y mantenerse al día.</p>
+    <p class="es">A esto se le añade el factor de adopción de estas tecnologías en cada tipo de perfil. A los perfiles cercanos a la jubilación, para quienes la curva de aprendizaje es pronunciada, estas tecnologías les causan respeto e incluso rechazo. Los perfiles de mediana edad y menos técnicos varían: algunos lo rechazan, otros recurren al topicazo de "la IA nos va a quitar el trabajo" y otros se esfuerzan por aprender y mantenerse al día.</p>
+    <p class="en">On top of this comes how each type of profile adopts these technologies. For profiles close to retirement, for whom the learning curve is steep, these technologies inspire respect and even rejection. Mid-career and less technical profiles vary: some reject them, others fall back on the cliché that "AI is going to take our jobs", and others make an effort to learn and keep up to date.</p>
 
-    <p>Los más jóvenes son los que más rápido se adaptan y los más curiosos, sobre todo los más técnicos. En general, los perfiles técnicos (y que usan herramientas de IA en su día a día) son los que menos temen a la IA y los que más apuestan por ella, en cierto grado.</p>
+    <p class="es">Los más jóvenes son los que más rápido se adaptan y los más curiosos, sobre todo los más técnicos. En general, los perfiles técnicos (y que usan herramientas de IA en su día a día) son los que menos temen a la IA y los que más apuestan por ella, en cierto grado.</p>
+    <p class="en">The youngest are the quickest to adapt and the most curious, especially the more technical ones. In general, technical profiles (the ones who use AI tools in their day-to-day work) are the ones who fear AI the least and bet on it the most, to a certain degree.</p>
 
-    <p>Sabiendo esto, la gente que no está muy informada acaba agrupando bajo la etiqueta «IA» perfiles con funciones muy diferentes. El término es súper amplio. Decir que te dedicas a la IA es como decir que eres médico. Ser especialista en seguridad de la IA no es lo mismo que ser ingeniero de IA. Ser pentester no es lo mismo que ser analista de ciberseguridad. Ser pediatra no es lo mismo que ser cirujano. Y así podría seguir.</p>
+    <p class="es">Sabiendo esto, la gente que no está muy informada acaba agrupando bajo la etiqueta «IA» perfiles con funciones muy diferentes. El término es súper amplio. Decir que te dedicas a la IA es como decir que eres médico. Ser especialista en seguridad de la IA no es lo mismo que ser ingeniero de IA. Ser pentester no es lo mismo que ser analista de ciberseguridad. Ser pediatra no es lo mismo que ser cirujano. Y así podría seguir.</p>
+    <p class="en">Given this, people who aren't very well informed end up grouping very different roles under the label "AI". The term is extremely broad. Saying you work in AI is like saying you're a doctor. Being an AI safety specialist is not the same as being an AI engineer. Being a pentester is not the same as being a cybersecurity analyst. Being a pediatrician is not the same as being a surgeon. And I could go on.</p>
 
-    <p>Al ser un sector tan dinámico y "nuevo", no hay fronteras claras entre qué hace un rol u otro. Para alguien no técnico, esto puede llevar a comparar manzanas con peras o a esperar que un especialista en red teaming de IA asuma responsabilidades propias de un ingeniero de MLOps.</p>
+    <p class="es">Al ser un sector tan dinámico y "nuevo", no hay fronteras claras entre qué hace un rol u otro. Para alguien no técnico, esto puede llevar a comparar manzanas con peras o a esperar que un especialista en red teaming de IA asuma responsabilidades propias de un ingeniero de MLOps.</p>
+    <p class="en">Since the sector is so dynamic and "new", there are no clear boundaries between what one role does and another. For someone non-technical, this can lead to comparing apples and oranges, or to expecting an AI red teaming specialist to take on the responsibilities of an MLOps engineer.</p>
 
-    <p>En mi opinión, saber utilizar herramientas de IA en tu día a día te ayuda a entender cómo funcionan las nuevas tecnologías, pero no te hace saber de "IA". El skill gap entre manejar herramientas (mediante prompting, skills o rutinas de automatización) y diseñar, evaluar, desplegar o proteger sistemas de IA es considerable. Del mismo modo, tener nociones de programación no equivale a ser desarrollador full stack.</p>
+    <p class="es">En mi opinión, saber utilizar herramientas de IA en tu día a día te ayuda a entender cómo funcionan las nuevas tecnologías, pero no te hace saber de "IA". El skill gap entre manejar herramientas (mediante prompting, skills o rutinas de automatización) y diseñar, evaluar, desplegar o proteger sistemas de IA es considerable. Del mismo modo, tener nociones de programación no equivale a ser desarrollador full stack.</p>
+    <p class="en">In my opinion, knowing how to use AI tools in your daily work helps you understand how new technologies work, but it doesn't make you someone who knows "AI". The skill gap between using tools (through prompting, skills or automation routines) and designing, evaluating, deploying or securing AI systems is considerable. In the same way, having some notions of programming isn't the same as being a full stack developer.</p>
 
     <figure class="photo">
       <img src="img/datacamp-state-of-data-ai-literacy-2026.webp" width="1200" height="800" loading="lazy"
-           alt="Varias páginas del informe State of Data & AI Literacy 2026 de DataCamp, con gráficos sobre formación y brechas de habilidades en datos e IA." />
-      <figcaption>DataCamp, <em>State of Data &amp; AI Literacy 2026</em>: páginas del informe sobre formación y brechas de habilidades en datos e IA.</figcaption>
+           data-alt-es="Varias páginas del informe State of Data &amp; AI Literacy 2026 de DataCamp, con gráficos sobre formación y brechas de habilidades en datos e IA."
+           data-alt-en="Several pages of DataCamp's State of Data &amp; AI Literacy 2026 report, with charts about training and skills gaps in data and AI."
+           alt="Varias páginas del informe State of Data &amp; AI Literacy 2026 de DataCamp, con gráficos sobre formación y brechas de habilidades en datos e IA." />
+      <figcaption>
+        <span class="es">DataCamp, <em>State of Data &amp; AI Literacy 2026</em>: páginas del informe sobre formación y brechas de habilidades en datos e IA.</span>
+        <span class="en">DataCamp, <em>State of Data &amp; AI Literacy 2026</em>: report pages on training and skills gaps in data and AI.</span>
+      </figcaption>
     </figure>
 
-    <p>Por otro lado, el mercado se adapta a las nuevas tecnologías, y las empresas deben ser conscientes de ello y aplicar estrategias con visión de futuro, no parches inmediatos como onboardings o cursos baratos para utilizar herramientas sin saber cómo aplicarlas en cada caso. Aun así, en la gran mayoría de casos suele salir más barato implementar sistemas que se adapten a la empresa y faciliten el trabajo de los empleados que hacer que la empresa entera se adapte a una nueva herramienta. Pero cada caso es diferente.</p>
+    <p class="es">Por otro lado, el mercado se adapta a las nuevas tecnologías, y las empresas deben ser conscientes de ello y aplicar estrategias con visión de futuro, no parches inmediatos como onboardings o cursos baratos para utilizar herramientas sin saber cómo aplicarlas en cada caso. Aun así, en la gran mayoría de casos suele salir más barato implementar sistemas que se adapten a la empresa y faciliten el trabajo de los empleados que hacer que la empresa entera se adapte a una nueva herramienta. Pero cada caso es diferente.</p>
+    <p class="en">On the other hand, the market adapts to new technologies, and companies need to be aware of it and apply forward-looking strategies, not quick patches such as onboardings or cheap courses to use tools without knowing how to apply them in each case. Even so, in the vast majority of cases it's usually cheaper to implement systems that adapt to the company and make employees' work easier than to make the whole company adapt to a new tool. But every case is different.</p>
 
-    <p class="closing">Para mí, ahí está la clave: entender qué necesita la empresa y qué puede aportar cada perfil antes de contratar bajo una etiqueta tan amplia como «IA».</p>
+    <p class="closing es">Para mí, ahí está la clave: entender qué necesita la empresa y qué puede aportar cada perfil antes de contratar bajo una etiqueta tan amplia como «IA».</p>
+    <p class="closing en">For me, that's the key: understanding what the company needs and what each profile can contribute before hiring under a label as broad as "AI".</p>
 
   </article>
 
   <div class="footer-note">
-    <p>Gonzalo Del Castillo García, octubre 2026. Fuentes: Lightcast, <em>Beyond the Buzz</em> (2025) · DataCamp, <em>State of Data &amp; AI Literacy 2026</em> · Stanford HAI, <em>Artificial Intelligence Index Report 2026</em>.</p>
-    <p>Las imágenes son portadas y capturas de esos informes. Pertenecen a sus autores y se muestran aquí para ilustrar las fuentes.</p>
+    <p class="es">Gonzalo Del Castillo García, octubre 2026. Fuentes: Lightcast, <em>Beyond the Buzz</em> (2025) · DataCamp, <em>State of Data &amp; AI Literacy 2026</em> · Stanford HAI, <em>Artificial Intelligence Index Report 2026</em>.</p>
+    <p class="en">Gonzalo Del Castillo García, October 2026. Sources: Lightcast, <em>Beyond the Buzz</em> (2025) · DataCamp, <em>State of Data &amp; AI Literacy 2026</em> · Stanford HAI, <em>Artificial Intelligence Index Report 2026</em>.</p>
+    <p class="es">Las imágenes son portadas y capturas de esos informes. Pertenecen a sus autores y se muestran aquí para ilustrar las fuentes.</p>
+    <p class="en">The images are covers and captures from those reports. They belong to their authors and are shown here to illustrate the sources.</p>
   </div>
 
 </main>
 
 <script>
+  var STRINGS = {
+    es: { title: '«Trabajo en IA». ¿Pediatra o cirujano? — Gonzalo Del Castillo García', pause: 'Pausar animación', play: 'Reproducir animación' },
+    en: { title: '“I work in AI.” Pediatrician or surgeon? — Gonzalo Del Castillo García', pause: 'Pause animation', play: 'Play animation' }
+  };
+
+  function currentLang() {
+    return document.documentElement.getAttribute('data-lang') === 'en' ? 'en' : 'es';
+  }
+
+  // Language toggle. Images and the video carry their description in both languages.
+  function setLang(lang, fromUser) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.title = STRINGS[lang].title;
+
+    var withAlt = document.querySelectorAll('[data-alt-es]');
+    for (var i = 0; i < withAlt.length; i++) {
+      var el = withAlt[i];
+      el.setAttribute(el.tagName === 'VIDEO' ? 'aria-label' : 'alt', el.getAttribute('data-alt-' + lang));
+    }
+
+    if (window.syncVideoButton) window.syncVideoButton();
+
+    // Keep the address shareable: ?lang=en for English, the clean URL for Spanish.
+    if (fromUser && window.history && history.replaceState) {
+      history.replaceState(null, '', lang === 'en' ? '?lang=en' : location.pathname);
+    }
+  }
+
   // Theme toggle (shared with portfolio home via localStorage)
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
@@ -384,19 +497,21 @@
     var v = document.getElementById('lightcast-video');
     var b = document.getElementById('video-toggle');
     if (!v || !b) return;
-    function sync() {
-      b.textContent = v.paused ? 'Reproducir animación' : 'Pausar animación';
+    window.syncVideoButton = function () {
+      b.textContent = v.paused ? STRINGS[currentLang()].play : STRINGS[currentLang()].pause;
       b.setAttribute('aria-pressed', String(v.paused));
-    }
+    };
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       v.removeAttribute('autoplay');
       v.pause();
     }
     b.addEventListener('click', function () { if (v.paused) { v.play(); } else { v.pause(); } });
-    v.addEventListener('play', sync);
-    v.addEventListener('pause', sync);
-    sync();
+    v.addEventListener('play', window.syncVideoButton);
+    v.addEventListener('pause', window.syncVideoButton);
   })();
+
+  // Apply the language that was requested in the URL (or the Spanish default).
+  setLang(currentLang(), false);
 
   // Reading progress bar
   window.addEventListener('scroll', function () {
